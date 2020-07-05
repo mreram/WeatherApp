@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+apply from: '../build_versions.gradle'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "com.eram.weather"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation "androidx.core:core-ktx:${libraries.core_ktx_version}"
+    implementation "androidx.appcompat:appcompat:${libraries.appcompat_version}"
+    implementation "androidx.constraintlayout:constraintlayout:${libraries.constraintlayout_version}"
+    implementation "androidx.recyclerview:recyclerview:${libraries.recyclerview_version}"
+
+    implementation "androidx.activity:activity-ktx:${libraries.activity_ktx_version}"
+
+
+    implementation project(":data")
+    implementation project(":domain")
+
+    implementation "com.google.dagger:hilt-android:${libraries.hilt_version}"
+    kapt "com.google.dagger:hilt-android-compiler:${libraries.hilt_version}"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:${libraries.hilt_jetpack_version}"
+    kapt "androidx.hilt:hilt-compiler:${libraries.hilt_jetpack_version}"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+}

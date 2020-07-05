@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+apply from: '../build_versions.gradle'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    api project(":domain")
+
+    api "com.google.dagger:hilt-android:${libraries.hilt_version}"
+    kapt "com.google.dagger:hilt-android-compiler:${libraries.hilt_version}"
+
+    api "com.squareup.retrofit2:retrofit:${libraries.retrofit_version}"
+    api "com.squareup.retrofit2:converter-gson:${libraries.retrofit_version}"
+    api "com.squareup.okhttp3:logging-interceptor:${libraries.okhttp_version}"
+    api "com.squareup.okhttp3:okhttp:${libraries.okhttp_version}"
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+}

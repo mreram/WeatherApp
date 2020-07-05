@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="app_name">Weather</string>
+    <string name="tomorrow">Tomorrow</string>
+
+    <string-array name="city_name">
+        <item>Tehran</item>
+        <item>Mashhad</item>
+        <item>Zahedan</item>
+        <item>Shiraz</item>
+    </string-array>
+
+    <integer-array name="city_ids">
+        <item>112931</item>
+        <item>124665</item>
+        <item>1159301</item>
+        <item>115019</item>
+    </integer-array>
+
+</resources>
