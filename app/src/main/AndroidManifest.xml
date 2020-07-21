@@ -14,6 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:configChanges="screenSize|orientation|screenLayout"
             android:launchMode="singleTask">
             <intent-filter>

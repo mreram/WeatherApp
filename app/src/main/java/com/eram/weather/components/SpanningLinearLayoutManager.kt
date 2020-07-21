@@ -1,11 +1,10 @@
-package com.eram.weather.utils
+package com.eram.weather.components
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.math.roundToInt
 
 class SpanningLinearLayoutManager : LinearLayoutManager {
     constructor(context: Context?) : super(context) {}

@@ -1,7 +1,6 @@
 package com.eram.weather
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -15,7 +14,7 @@ import com.eram.domain.entity.Weather
 import com.eram.weather.adapter.DaysAdapter
 import com.eram.weather.adapter.TimesAdapter
 import com.eram.weather.mapper.getWeatherIcon
-import com.eram.weather.utils.SpanningLinearLayoutManager
+import com.eram.weather.components.SpanningLinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -31,19 +30,11 @@ class MainActivity : AppCompatActivity() {
     private var currentTimeState: TimeState? = null
     private var isNotNowWeather = false
 
-    companion object {
-        @JvmStatic
-        private var context2: Context? = null
-    }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initViews()
-        context2 = this
-
         registerObservers()
         mainVM.getCurrentTimeState()
 
